@@ -277,6 +277,7 @@
       margin-top: 0.1in; /* Add some space above it */
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js" defer></script>
 </head>
 <body>
 
@@ -314,7 +315,7 @@
           <option value="Minhla">Minhla</option>
           <option value="HTY-A">HTY-A</option>
           <option value="HTY-B">HTY-B</option>
-          <option value="Tontay">Tontay</option>
+          <option value="Tontay">Tontay</singu>
           <option value="KM">KM</option>
           <option value="KL">KL</option>
           <option value="Bago-A">Bago-A</option>
@@ -328,13 +329,13 @@
           <option value="Kyauktan">Kyauktan</option>
           <option value="MDY">MDY</option>
           <option value="TDU">TDU</option>
-          <option value="SGN">SGN</singu>
+          <option value="SGN">SGN</option>
           <option value="KSE">KSE</option>
           <option value="NK">NK</option>
           <option value="Myinmu">Myinmu</option>
           <option value="YSG">YSG</option>
           <option value="MYA">MYA</option>
-          <option value="Singu">Singu</singu>
+          <option value="Singu">Singu</option>
           <option value="MTY">MTY</option>
           <option value="SCT">SCT</option>
           <option value="AMC">AMC</option>
@@ -378,7 +379,6 @@
 
   <div class="gap-before-table">
     <div class="row">
-      <!-- This box covers the first 7 columns, whose widths are fixed -->
       <div class="box" style="width: calc(0.3in + 1.1in + 1.5in + 0.6in + 2.1in + 1.4in + 1.2in); border: none;"></div>
       <div class="merged-system">System Amount</div>
       <div class="merged-reducing">Reducing Amount</div>
@@ -415,7 +415,6 @@
       <tr><td>Saving offset</td><td><input id="savingOffset" readonly></td></tr>
       <tr><td>Cash Collection</td><td><input id="cashCollection" readonly></td></tr>
     </table>
-    <!-- New div for "Created by YYA" text -->
     <div class="created-by">Created by YYA</div>
   </div>
 
@@ -628,7 +627,7 @@
     // Date formatting for PDF output
     function formatDate(date) {
       const day = date.getDate().toString().padStart(2, '0');
-      const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
       const month = monthNames[date.getMonth()];
       const year = date.getFullYear();
       return `${day}-${month}-${year}`;
@@ -643,7 +642,6 @@
     });
   </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script>
   function prepareInputsForPDF() {
     // Convert text inputs to spans
@@ -685,6 +683,9 @@
 
       // Preserve content of drag-drop boxes if it's an image
       if (input.parentNode && input.parentNode.classList.contains('drag-drop-box')) {
+        // If the input is inside a drag-drop box, it means it's the date input in the top-right table.
+        // We still replace it with a span for PDF generation. The image handling for drag-drop boxes
+        // happens separately when converting drag-drop boxes to their final PDF state.
         input.parentNode.replaceChild(span, input);
       } else {
         input.parentNode.replaceChild(span, input);
