@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interest Calculation Table</title>
+  <link rel="stylesheet" href="approval.css">
+</head>
+<body>
+
+  <div id="pdfHeaderDateTime" style="position: absolute; top: 0.5in; right: 0.5in; font-size: 11px; display: none;"></div>
+
+  <div id="titleHeader">Approval Request Form for Extension</div>
+
+<button class="save-pdf-btn" onclick="savePageAsPDF()">Save as PDF</button>
+
+  <table id="topRightTable">
+    <tr>
+      <td>
+        <select id="teamSelect">
+          <option value="">Choose Team</option>
+          <option value="HO-A">HO-A</option>
+          <option value="HO-B">HO-B</option>
+          <option value="TK">TK</option>
+          <option value="TY">TY</option>
+          <option value="Minhla">Minhla</option>
+          <option value="HTY-A">HTY-A</option>
+          <option value="HTY-B">HTY-B</option>
+          <option value="Tontay">Tontay</option>
+          <option value="KM">KM</option>
+          <option value="KL">KL</option>
+          <option value="Bago-A">Bago-A</option>
+          <option value="Bago-B">Bago-B</option>
+          <option value="Waw">Waw</option>
+          <option value="OT">OT</option>
+          <option value="DU">DU</option>
+          <option value="NLP">NLP</option>
+          <option value="NDG">NDG</option>
+          <option value="Khayan">Khayan</option>
+          <option value="Kyauktan">Kyauktan</option>
+          <option value="MDY">MDY</option>
+          <option value="TDU">TDU</option>
+          <option value="SGN">SGN</singu>
+          <option value="KSE">KSE</option>
+          <option value="NK">NK</option>
+          <option value="Myinmu">Myinmu</option>
+          <option value="YSG">YSG</singu>
+          <option value="MYA">MYA</option>
+          <option value="Singu">Singu</singu>
+          <option value="MTY">MTY</option>
+          <option value="SCT">SCT</option>
+          <option value="AMC">AMC</option>
+        </select>
+      </td>
+      <td colspan="5"><strong>Approval</strong></td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>Checking by</td>
+      <td>Staff</td>
+      <td>Branch Manager</td>
+      <td>ARM/RM</td>
+      <td>GDH</td>
+    </tr>
+    <tr> <td><input type="date" id="topRightTableDateInput" style="width: 100%; box-sizing: border-box;"></td>
+      <td><div class="drag-drop-box" id="drop-checkingby"></div></td>
+      <td><div class="drag-drop-box" id="drop-staff"></div></td>
+      <td><div class="drag-drop-box" id="drop-branchmanager"></div></td>
+      <td><div class="drag-drop-box" id="drop-armrm"></div></td>
+      <td><div class="drag-drop-box" id="drop-gdh"></div></td>
+    </tr>
+  </table>
+
+  <div class="top-section">
+    <div class="checkbox-row">
+      <span>Purpose: To Reduce</span>
+      <label><input type="checkbox" class="purpose-checkbox" /> Interest</label>
+      <label><input type="checkbox" class="purpose-checkbox" /> Penalty</label>
+      <label><input type="checkbox" class="purpose-checkbox" /> Extension</label>
+    </div>
+    <p class="gap1">
+      အောက်ပါ အဖွဲ့ဝင်များသည် စီးပွားရေးလုပ်ငန်းများ အဆင်မပြေသောကြောင့် ကြပ်တည်းခက်ခဲမှုများနှင့် ရင်ဆိုင်နေရသဖြင့်
+      ကုမ္ပဏီသို့ ပေးဆပ်ရန်ကျန်ရှိသော အရင်း ၊ အတိုး ကို အကြေပေးသွင်းပါမည်။
+    </p>
+    <p class="gap-before-table">
+      သို့ဖြစ်ပါ၍ လက်ရှိတက်နေသော Interest , Penalty , Extension Interest ကို ကုမ္ပဏီဘက်မှ
+      လျှော့ပေါ့ပေးနိုင်ပါရန် တင်ပြအပ်ပါသည်။
+    </p>
+  </div>
+
+  <div class="gap-before-table">
+    <div class="row">
+      <div class="box" style="width: calc(0.3in + 1.1in + 1.5in + 0.6in + 2.1in + 1.4in + 1.2in); border: none;"></div>
+      <div class="merged-system">System Amount</div>
+      <div class="merged-reducing">Reducing Amount</div>
+    </div>
+
+    <div class="row row-2">
+      <div class="box col-1">No</div>
+      <div class="box col-2">Acc ID</div>
+      <div class="box col-3">Borrower Name</div>
+      <div class="box col-4">Group ID</div>
+      <div class="box col-5">Address</div>
+      <div class="box col-6">Contact</div>
+      <div class="box col-7">Maturity<br>Date</div>
+      <div class="box col-8">Cash<br>Collection</div>
+      <div class="box col-9">Saving</div>
+      <div class="box col-10">Principal</div>
+      <div class="box col-11">Interest</div>
+      <div class="box col-12">Penalty</div>
+      <div class="box col-13">Ext.<br>Interest</div>
+      <div class="box col-14">Principal</div>
+      <div class="box col-15">Interest</div>
+      <div class="box col-16">Penalty</div>
+      <div class="box col-17">Extension</div>
+      <div class="box col-18">Total Reducing Amt</div>
+    </div>
+
+    <div id="inputRowsContainer"></div>
+  </div>
+
+  <div class="gap-before-second">
+    <table id="secondTable">
+      <tr><td>Payable Amount</td><td><input id="payableAmount" readonly></td></tr>
+      <tr><td>Reducing Amount</td><td><input id="reducingAmount" readonly></td></tr>
+      <tr><td>Saving offset</td><td><input id="savingOffset" readonly></td></tr>
+      <tr><td>Cash Collection</td><td><input id="cashCollection" readonly></td></tr>
+    </table>
+    <div class="created-by">Created by YYA</div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <script src="approval.js"></script>
+
+</body>
+</html>

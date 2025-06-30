@@ -1,0 +1,286 @@
+@page {
+  size: landscape;
+  margin: 0;
+}
+body {
+  margin: 0.5in;
+  font-family: Arial, sans-serif;
+  position: relative;
+  min-height: 100vh;
+}
+#titleHeader {
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px; /* Increased from 16px */
+  margin-bottom: 0.3in;
+}
+/* Removed Footer styles */
+
+.top-section {
+  text-align: left;
+  font-size: 11px; /* Increased from 10px */
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3in;
+  margin-bottom: 0.2in;
+  font-weight: normal;
+  font-size: 17px; /* Explicitly set to 16px + 1px */
+}
+.checkbox-row span {
+  margin-right: 0.1in;
+}
+.checkbox-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.1in;
+  cursor: pointer;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+/* New style for PDF checkboxes */
+.pdf-checkbox {
+  display: inline-block;
+  width: 14px; /* Same as the original checkbox width */
+  height: 14px; /* Same as the original checkbox height */
+  border: 1px solid black;
+  text-align: center;
+  line-height: 14px; /* Vertically center the checkmark */
+  font-size: 11px; /* Increased from 10px */
+  margin-right: 0.1in; /* Space between box and text */
+  vertical-align: middle; /* Align with text */
+}
+.pdf-checkbox.checked::after {
+    content: '\2713'; /* Unicode checkmark */
+    font-size: 13px; /* Increased from 12px */
+    line-height: 14px;
+    display: block;
+}
+
+
+.top-section p {
+  margin: 0;
+}
+.top-section .gap1 {
+  margin-bottom: 0.1in;
+  font-weight: normal;
+  font-size: 17px;
+}
+.gap-before-table {
+  margin-top: 0.1in;
+  font-weight: normal;
+  font-size: 17px;
+}
+.gap-before-second {
+  margin-top: 0.2in;
+}
+
+.row {
+  display: flex;
+  height: 0.36in; /* Changed from 0.2in to 0.36in */
+  font-size: 11px; /* Increased from 10px */
+}
+.row.row-2 {
+  height: 0.36in; /* Changed from 0.3in to 0.36in */
+  font-size: 12px; /* Increased from 10px to 12px */
+}
+.box {
+  border: 1px solid #000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  overflow: hidden;
+  /* white-space: nowrap; Removed for general boxes to allow specific wraps */
+  text-align: center;
+  font-weight: bold; /* Made all content in these boxes bold */
+}
+/* UPDATED: Input styling for Calibri, bold, 10px font size, left-aligned, no padding, no wrapping */
+input {
+  width: 100%;
+  border: none;
+  font-size: 10px; /* Changed font size to 10px */
+  font-family: Calibri, sans-serif; /* Changed font to Calibri */
+  text-align: left; /* Changed text alignment to left */
+  padding: 0; /* Removed all padding */
+  box-sizing: border-box;
+  font-weight: bold; /* Ensures all input fields are bold */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflowing content */
+}
+input[readonly] {
+  background-color: #f0f0f0;
+  cursor: default;
+}
+.col-1 { width: 0.3in; }
+.col-2 { width: 1.1in; } /* Changed as requested */
+.col-3 { width: 1.5in; } /* Changed as requested */
+.col-4 { width: 0.6in; } /* Changed as requested */
+.col-5 { width: 2.1in; } /* Changed as requested */
+.col-6 { width: 1.4in; } /* Changed as requested */
+.col-7 { width: 1.2in; }
+.col-8 { width: 0.8in; }
+.col-9 { width: 0.8in; }
+.col-10 { width: 0.8in; }
+.col-11 { width: 0.8in; }
+.col-12 { width: 0.8in; }
+.col-13 { width: 0.8in; }
+.col-14 { width: 1.1in; }
+.col-15 { width: 0.9in; }
+.col-16 { width: 0.9in; }
+.col-17 { width: 0.9in; }
+.col-18 {
+  width: 1.2in;
+  /* white-space: normal; - This was for the box, but input now overrides */
+}
+
+.merged-system {
+  /* This width calculation needs to be dynamic based on the actual sum of widths for cols 8-13 */
+  /* Adjusted to explicitly sum the widths of col-8 to col-13 */
+  width: calc(0.8in + 0.8in + 0.8in + 0.8in + 0.8in + 0.8in);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px; /* Increased font size for System Amount */
+}
+.merged-reducing {
+  /* This width calculation needs to be dynamic based on the actual sum of widths for cols 14-18 */
+  /* Adjusted to explicitly sum the widths of col-14 to col-18 */
+  width: calc(1.1in + 0.9in + 0.9in + 0.9in + 1.2in);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px; /* Increased font size for Reducing Amount */
+}
+#secondTable {
+  font-size: 11px; /* Increased from 10px */
+  border-collapse: collapse;
+}
+#secondTable td {
+  border: 1px solid black;
+  padding: 4px 8px;
+}
+#secondTable td:first-child {
+  width: 1.6in;
+  font-weight: bold;
+}
+#secondTable td:nth-child(2) {
+    width: 1.5in;
+    text-align: right;
+}
+
+#topRightTable {
+  border-collapse: collapse;
+  font-size: 11px; /* Increased from 10px */
+  margin-bottom: 0.3in;
+  /* Adjusted width calculation based on 0.8in for first col and 1in for remaining 5 cols */
+  width: calc(0.8in + 1in * 5);
+  margin-left: auto;
+  margin-right: 5.6in;
+}
+#topRightTable td {
+  border: 1px solid black;
+  padding: 2px 4px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #e9effa;
+}
+#topRightTable tr:nth-child(1) td {
+  font-weight: bold;
+  font-size: 12px; /* Changed font size for "Approval" */
+}
+#topRightTable tr:nth-child(1) { /* New rule for 1st row height */
+  height: 0.4in; /* Changed row height for "Approval" row */
+}
+#topRightTable tr:nth-child(2) td { /* Modified to make the second row cells bold */
+  font-weight: bold;
+}
+#topRightTable td:first-child {
+  width: 0.8in;
+}
+#topRightTable td:not(:first-child) {
+  width: 1in; /* Changed from 0.7in to 1in */
+}
+#topRightTable tr:nth-child(3) { /* New rule for 3rd row height */
+  height: 1in;
+}
+/* Style for the new select dropdown */
+#teamSelect {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    appearance: none; /* Remove default dropdown arrow for better cross-browser consistency */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0;
+    margin: 0;
+}
+#teamSelect:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+/* New styles for drag and drop boxes */
+.drag-drop-box {
+  width: 0.8in; /* Changed from 0.5in to 0.8in */
+  height: 0.9in; /* Changed from 100% to 0.9in */
+  border: 2px dashed #666;
+  background-color: #fafafa;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.drag-drop-box.dragover {
+  border-color: #3399ff;
+  background-color: #e0f0ff;
+}
+.drag-drop-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* Highlight red background for col-14 inputs when value > 0 */
+.highlight-red {
+  background-color: #ffcccc !important;
+  color: #900;
+  font-weight: bold;
+}
+.hide-on-pdf {
+  display: none !important;
+}
+/* New style for the "Created by YYA" text */
+.created-by {
+  font-size: 8pt;
+  text-align: left;
+  margin-top: 0.1in; /* Add some space above it */
+}
+
+.save-pdf-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 999;
+}
